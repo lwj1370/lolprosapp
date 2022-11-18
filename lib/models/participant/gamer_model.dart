@@ -35,4 +35,10 @@ class Gamer {
   );
 
   factory Gamer.empty() => Gamer(false, false, false, Item.empty());
+
+  @override
+  String toString() {
+    return 'Gamer : {win : $win, gameEndedInEarlySurrender : $gameEndedInEarlySurrender, gameEndedInSurrender : $gameEndedInSurrender,'
+        'item : $item }';
+  }
 }
