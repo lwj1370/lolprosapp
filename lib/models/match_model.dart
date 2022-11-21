@@ -17,7 +17,7 @@ class GameMatch {
     print(json['gamer']);
     return GameMatch(
         matchId: json['matchId'],
-        gamer: Gamer.empty()
+        gamer: Gamer.fromJson(json['gamer']),
     );
   }
 

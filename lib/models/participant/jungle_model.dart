@@ -14,4 +14,10 @@ class Jungle {
     dragonTakedowns: json['dragonTakedowns'],
     elderDragonMultikills: json['elderDragonMultikills'],
   );
+
+  factory Jungle.empty() => Jungle(
+    baronTakedowns: 0,
+    dragonTakedowns: 0,
+    elderDragonMultikills: 0,
+  );
 }

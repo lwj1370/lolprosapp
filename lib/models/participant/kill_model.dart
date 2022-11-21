@@ -33,22 +33,44 @@ class Kill {
     required this.baronKills,
   });
 
-  factory Kill.fromJson(Map<String, dynamic> json) => Kill(
-    firstBloodAssist: json['firstBloodAssist'],
-    firstBloodKill: json['firstBloodKill'],
-    assists: json['firstBloodKill'],
-    largestMultiKill: json['largestMultiKill'],
-    participantId: json['participantId'],
-    doubleKills: json['doubleKills'],
-    tripleKills: json['tripleKills'],
-    quadraKills: json['quadraKills'],
-    pentaKills: json['pentaKills'],
-    unrealKills: json['unrealKills'],
-    kills: json['kills'],
-    deaths: json['deaths'],
-    kda: json['kda'],
-    dragonKills: json['dragonKills'],
-    baronKills: json['baronKills'],
+  factory Kill.fromJson(Map<String, dynamic> json) {
+
+    return Kill(
+      firstBloodAssist: json['firstBloodAssist'],
+      firstBloodKill: json['firstBloodKill'],
+      assists: json['assists'],
+      largestMultiKill: json['largestMultiKill'],
+      participantId: json['participantId'],
+      doubleKills: json['doubleKills'],
+      tripleKills: json['tripleKills'],
+      quadraKills: json['quadraKills'],
+      pentaKills: json['pentaKills'],
+      unrealKills: json['unrealKills'],
+      kills: json['kills'],
+      deaths: json['deaths'],
+      kda: json['kda'],
+      dragonKills: json['dragonKills'],
+      baronKills: json['baronKills'],
+    );
+
+  }
+
+  factory Kill.empty() => Kill(
+    firstBloodAssist: false,
+    firstBloodKill: false,
+    assists: 0,
+    largestMultiKill: 0,
+    participantId: 0,
+    doubleKills: 0,
+    tripleKills: 0,
+    quadraKills: 0,
+    pentaKills: 0,
+    unrealKills: 0,
+    kills: 0,
+    deaths: 0,
+    kda: 0.0,
+    dragonKills: 0,
+    baronKills: 0
   );
 
 }

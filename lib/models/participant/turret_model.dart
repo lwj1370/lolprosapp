@@ -19,4 +19,12 @@ class Turret {
       turretKills: json['turretKills'],
       turretTakedowns: json['turretTakedowns'],
       turretsLost: json['turretsLost']);
+
+  factory Turret.empty() => Turret(
+      firstTowerAssist: false,
+      firstTowerKill: false,
+      turretKills: 0,
+      turretTakedowns: 0,
+      turretsLost: 0
+  );
 }

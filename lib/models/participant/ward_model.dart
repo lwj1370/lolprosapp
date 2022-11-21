@@ -19,4 +19,11 @@ class Ward {
     visionWardsBoughtInGame: json['visionWardsBoughtInGame'],
     wardsKilled: json['wardsKilled'],
     wardsPlaced: json['wardsPlaced']);
+
+  factory Ward.empty() => Ward(
+      visionClearedPings: 0,
+      visionScore: 0,
+      visionWardsBoughtInGame: 0,
+      wardsKilled: 0,
+      wardsPlaced: 0);
 }

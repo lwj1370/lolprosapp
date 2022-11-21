@@ -20,4 +20,12 @@ class Spell {
     spell3Casts: json['spell3Casts'],
     spell4Casts: json['spell4Casts'],
   );
+
+  factory Spell.empty() => Spell(
+    abilityUses: 0,
+    spell1Casts: 0,
+    spell2Casts: 0,
+    spell3Casts: 0,
+    spell4Casts: 0
+  );
 }

@@ -14,9 +14,9 @@ Future<String> lolGamer(String gamer) async {
     response = await http.post(Uri.parse(url)).timeout(const Duration(seconds: 30),);
 
     GameMatch gameMatch = GameMatch.fromJson(jsonDecode(response.body));
-    print(gameMatch);
+
   } catch(e) {
-    print(e);
+    print('Error Occurred $e');
   }
 
   return val;

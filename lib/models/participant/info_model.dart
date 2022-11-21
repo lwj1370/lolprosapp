@@ -23,4 +23,12 @@ class Info {
     lane: json['lane'],
   );
 
+  factory Info.empty() => Info(
+      summonerName: '',
+      summonerLevel: 0,
+      champLevel: 0,
+      championId: 0,
+      championName: '',
+      lane: '');
+
 }

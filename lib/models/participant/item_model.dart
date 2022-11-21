@@ -23,18 +23,27 @@ class Item {
     required this.item6,
   });
 
-  factory Item.fromJson(Map<String, dynamic> json) => Item(
-    goldEarned: int.parse(json['goldEarned']),
-    goldSpent: int.parse(json['goldSpent']),
-    goldPerMinute: double.parse(json['goldPerMinute']),
-    item0: int.parse(json['item0']),
-    item1: int.parse(json['item1']),
-    item2: int.parse(json['item2']),
-    item3: int.parse(json['item3']),
-    item4: int.parse(json['item4']),
-    item5: int.parse(json['item5']),
-    item6: int.parse(json['item6']),
-  );
+  factory Item.fromJson(Map<String, dynamic> json) {
+    Item item = Item.empty();
+    try {
+      item = Item(
+        goldEarned: json['goldEarned'],
+        goldSpent: json['goldSpent'],
+        goldPerMinute: json['goldPerMinute'],
+        item0: json['item0'],
+        item1: json['item1'],
+        item2: json['item2'],
+        item3: json['item3'],
+        item4: json['item4'],
+        item5: json['item5'],
+        item6: json['item6'],
+      );
+    } catch(e) {
+      print('Error $e');
+    }
+
+    return item;
+  }
 
   factory Item.empty() => Item(
     goldEarned: 0,
