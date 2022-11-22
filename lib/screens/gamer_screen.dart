@@ -1,35 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:lolprosapp/models/match_model.dart';
 import 'package:lolprosapp/providers/lol_match_provider.dart';
 
 class GamerScreen extends StatelessWidget {
   GamerScreen({Key? key, required this.gamerName}) : super(key: key);
 
   final String gamerName;
+  var lolResponse;
+  GameMatch gameMatch = GameMatch.empty();
+
+  @override
+  void initState() {
+    lolResponse = lolGamer(gamerName);
+
+    lolResponse.then((value) => {
+      gameMatch = value
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: Center(
-          child: ElevatedButton(
-            child: Text('Test Button'),
-            onPressed: () {
-              lolGamer(gamerName);
-              // FutureBuilder<String>(
-              //   future: ,
-              //   builder: (context, snapshot) {
-              //     if (snapshot.hasData) {
-              //       return Text(snapshot.data!);
-              //     } else if (snapshot.hasError) {
-              //       return Text('${snapshot.error}');
-              //     }
-              //
-              //     // By default, show a loading spinner.
-              //     return const CircularProgressIndicator();
-              //   },
-              // );
-            },
-          ),
+        child: Column(
+          children: [
+            Row(
+              children: [
+
+              ],
+            ),
+          ],
         ),
       ),
     );

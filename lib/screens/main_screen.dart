@@ -12,7 +12,16 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GamerScreen(gamerName: 'SKT T1 Faker'),
+      body: Column(
+        children: [
+          ElevatedButton(onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) {
+                  return GamerScreen(gamerName: 'SKT T1 Faker');
+                }));
+          }, child: Text('SKT T1 Faker'))
+        ],
+      ),
     );
   }
 }

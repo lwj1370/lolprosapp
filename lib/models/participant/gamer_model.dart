@@ -65,7 +65,7 @@ class Gamer {
   @override
   String toString() {
     return 'Gamer : '
-        '{win : $win, '
+        '{ win : $win, '
         'gameEndedInEarlySurrender : $gameEndedInEarlySurrender, '
         'gameEndedInSurrender : $gameEndedInSurrender,'
         'item : $item, '

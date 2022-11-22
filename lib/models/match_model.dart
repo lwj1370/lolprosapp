@@ -13,13 +13,13 @@ class GameMatch {
   });
 
   factory GameMatch.fromJson(Map<String, dynamic> json) {
-
-    print(json['gamer']);
     return GameMatch(
         matchId: json['matchId'],
         gamer: Gamer.fromJson(json['gamer']),
     );
   }
+
+  factory GameMatch.empty() => GameMatch(matchId: '', gamer: Gamer.empty());
 
   @override
   String toString() {

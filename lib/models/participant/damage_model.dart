@@ -79,7 +79,8 @@ class Damage {
 
   @override
   String toString() {
-    return 'damagePerMinute : $damagePerMinute,'
+    return
+    '{ damagePerMinute : $damagePerMinute,'
     'totalDamageDealt : $totalDamageDealt,'
     'totalDamageDealtToChampions : $totalDamageDealtToChampions,'
     'totalDamageShieldedOnTeammates : $totalDamageShieldedOnTeammates,'
@@ -95,6 +96,7 @@ class Damage {
     'physicalDamageDealt : $physicalDamageDealt,'
     'physicalDamageDealtToChampions : $physicalDamageDealtToChampions,'
     'physicalDamageTaken : $physicalDamageTaken,'
-    'magicDamageTaken : $magicDamageTaken,';
+    'magicDamageTaken : $magicDamageTaken,'
+    '}';
   }
 }
