@@ -13,7 +13,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'LOL Pro-Gamers Info',
-      home: MainScreen(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('LOL Pro-Gamers Main Page'),
+        ),
+        body: MainScreen()
+      ),
     );
   }
 }

@@ -28,27 +28,35 @@ class _GamerScreenState extends State<GamerScreen> {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        body: Container(
-          child: FutureBuilder(
-            future: futureGameMatch,
-            builder: (context, snapshot) {
-              if(snapshot.connectionState == ConnectionState.done) {
-                GameMatch gameMatch = snapshot.data as GameMatch;
-                return Column(
-                  children: [
-                    Row(
+        appBar: AppBar(
+          title: Text('LOL Pro-Gamers Info'),
+        ),
+        body: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.all(15),
+              child: FutureBuilder(
+                future: futureGameMatch,
+                builder: (context, snapshot) {
+                  if(snapshot.connectionState == ConnectionState.done) {
+                    GameMatch gameMatch = snapshot.data as GameMatch;
+                    return Column(
                       children: [
-                        Text(gameMatch.matchId)
+                        Row(
+                          children: [
+                            Text(gameMatch.matchId)
+                          ],
+                        ),
                       ],
-                    ),
-                  ],
-                );
-              }
+                    );
+                  }
 
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            })
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                })
+            ),
+          ],
         ),
       )
     );
