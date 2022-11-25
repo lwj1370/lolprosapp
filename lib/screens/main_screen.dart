@@ -25,7 +25,7 @@ class _MainScreenState extends State<MainScreen> {
                     onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                            return GamerScreen(gamerName: 'Faker');
+                            return GamerScreen(gamerName: 'SKT T1 Faker');
                           }));
                     },
                     title: Text(
