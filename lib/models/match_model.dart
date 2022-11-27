@@ -8,14 +8,14 @@ class GameMatch {
   final String startTime;
   final String endTime;
   final String duration;
-  final Gamer gamer;
+  final MatchDetails match;
 
   GameMatch({
     required this.matchId,
     required this.startTime,
     required this.endTime,
     required this.duration,
-    required this.gamer,
+    required this.match,
   });
 
   factory GameMatch.fromJson(Map<String, dynamic> json) {
@@ -24,15 +24,15 @@ class GameMatch {
         startTime: json['startTime'],
         endTime: json['endTime'],
         duration: json['duration'],
-        gamer: Gamer.fromJson(json['gamer']),
+        match: MatchDetails.fromJson(json['match']),
     );
   }
 
-  factory GameMatch.empty() => GameMatch(matchId: '', startTime: '', endTime: '', duration: '', gamer: Gamer.empty());
+  factory GameMatch.empty() => GameMatch(matchId: '', startTime: '', endTime: '', duration: '', match: MatchDetails.empty());
 
   @override
   String toString() {
-    return 'GameMatch : { matchId : ${this.matchId}, startTime : ${this.startTime}, endTime : ${this.endTime}, duration : ${this.endTime}, gamer : ${this.gamer}}';
+    return 'GameMatch : { matchId : ${this.matchId}, startTime : ${this.startTime}, endTime : ${this.endTime}, duration : ${this.endTime}, gamer : ${this.match}}';
   }
 
 

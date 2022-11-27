@@ -7,7 +7,7 @@ import 'package:lolprosapp/models/participant/spell_model.dart';
 import 'package:lolprosapp/models/participant/turret_model.dart';
 import 'package:lolprosapp/models/participant/ward_model.dart';
 
-class Gamer {
+class MatchDetails {
   final bool win;
   final bool gameEndedInEarlySurrender;
   final bool gameEndedInSurrender;
@@ -20,7 +20,7 @@ class Gamer {
   final Turret turret;
   final Ward ward;
 
-  Gamer(
+  MatchDetails(
     this.win,
     this.gameEndedInEarlySurrender,
     this.gameEndedInSurrender,
@@ -34,7 +34,7 @@ class Gamer {
     this.ward
   );
 
-  factory Gamer.fromJson(Map<String, dynamic> json) => Gamer(
+  factory MatchDetails.fromJson(Map<String, dynamic> json) => MatchDetails(
       json['win'],
       json['gameEndedInEarlySurrender'],
       json['gameEndedInSurrender'],
@@ -48,7 +48,7 @@ class Gamer {
       Ward.fromJson(json['ward'])
   );
 
-  factory Gamer.empty() => Gamer(
+  factory MatchDetails.empty() => MatchDetails(
     false,
     false,
     false,

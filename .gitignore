@@ -8,6 +8,7 @@
 .buildlog/
 .history
 .svn/
+.metadata
 migrate_working_dir/
 
 # Build Applications
@@ -16,6 +17,7 @@ linux
 macos
 android
 ios
+web
 
 # IntelliJ related
 *.iml
