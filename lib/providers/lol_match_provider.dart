@@ -19,7 +19,7 @@ Future<GameMatch> lolGamer(String gamer) async {
       ).timeout(const Duration(seconds: 30),
     );
 
-    gameMatch = GameMatch.fromJson(jsonDecode(response.body));
+    gameMatch = GameMatch.fromJson(jsonDecode(response.body)['match']);
     log('Result : ${gameMatch.toString()}');
   } catch(e) {
     log('Error Occurred $e');

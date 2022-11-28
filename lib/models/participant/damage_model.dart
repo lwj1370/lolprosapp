@@ -80,23 +80,22 @@ class Damage {
   @override
   String toString() {
     return
-    '{ damagePerMinute : $damagePerMinute,'
-    'totalDamageDealt : $totalDamageDealt,'
-    'totalDamageDealtToChampions : $totalDamageDealtToChampions,'
-    'totalDamageShieldedOnTeammates : $totalDamageShieldedOnTeammates,'
-    'totalDamageTaken : $totalDamageTaken,'
-    'totalHeal : $totalHeal,'
-    'totalHealsOnTeammates : $totalHealsOnTeammates,'
-    'totalMinionsKilled : $totalMinionsKilled,'
-    'totalTimeCCDealt : $totalTimeCCDealt,'
-    'totalTimeSpentDead : $totalTimeSpentDead,'
-    'totalUnitsHealed : $totalUnitsHealed,'
-    'magicDamageDealt : $magicDamageDealt,'
-    'magicDamageDealtToChampions : $magicDamageDealtToChampions,'
-    'physicalDamageDealt : $physicalDamageDealt,'
-    'physicalDamageDealtToChampions : $physicalDamageDealtToChampions,'
-    'physicalDamageTaken : $physicalDamageTaken,'
-    'magicDamageTaken : $magicDamageTaken,'
-    '}';
+    '{ damagePerMinute : $damagePerMinute, '
+    'totalDamageDealt : $totalDamageDealt, '
+    'totalDamageDealtToChampions : $totalDamageDealtToChampions, '
+    'totalDamageShieldedOnTeammates : $totalDamageShieldedOnTeammates, '
+    'totalDamageTaken : $totalDamageTaken, '
+    'totalHeal : $totalHeal, '
+    'totalHealsOnTeammates : $totalHealsOnTeammates, '
+    'totalMinionsKilled : $totalMinionsKilled, '
+    'totalTimeCCDealt : $totalTimeCCDealt, '
+    'totalTimeSpentDead : $totalTimeSpentDead, '
+    'totalUnitsHealed : $totalUnitsHealed, '
+    'magicDamageDealt : $magicDamageDealt, '
+    'magicDamageDealtToChampions : $magicDamageDealtToChampions, '
+    'physicalDamageDealt : $physicalDamageDealt, '
+    'physicalDamageDealtToChampions : $physicalDamageDealtToChampions, '
+    'physicalDamageTaken : $physicalDamageTaken, '
+    'magicDamageTaken : $magicDamageTaken, }';
   }
 }

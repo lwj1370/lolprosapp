@@ -39,7 +39,7 @@ class Item {
         item6: json['item6'],
       );
     } catch(e) {
-      print('Error $e');
+      print('Error - $e');
     }
 
     return item;

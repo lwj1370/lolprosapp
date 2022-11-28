@@ -14,14 +14,16 @@ class Info {
     required this.championName,
     required this.lane});
 
-  factory Info.fromJson(Map<String, dynamic> json) => Info(
-    summonerName: json["summonerName"],
-    summonerLevel: json['summonerLevel'],
-    champLevel: json['champLevel'],
-    championId: json['championId'],
-    championName: json['championName'],
-    lane: json['lane'],
-  );
+  factory Info.fromJson(Map<String, dynamic> json) {
+    return Info(
+      summonerName: json["summonerName"],
+      summonerLevel: json['summonerLevel'],
+      champLevel: json['champLevel'],
+      championId: json['championId'],
+      championName: json['championName'],
+      lane: json['lane'],
+    );
+  }
 
   factory Info.empty() => Info(
       summonerName: '',
