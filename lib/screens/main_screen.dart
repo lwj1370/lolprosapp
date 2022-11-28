@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lolprosapp/models/pros_model.dart';
+import 'package:lolprosapp/providers/lol_pros_provider.dart';
 import 'package:lolprosapp/screens/gamer_screen.dart';
+import 'dart:developer';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -9,6 +12,15 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  late final Future<List<ProGamer>> futurePros;
+
+  @override
+  void initState() {
+    log('ProGamer List Loading...');
+    futurePros = lolPros();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +30,27 @@ class _MainScreenState extends State<MainScreen> {
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
             children: <Widget>[
+              FutureBuilder(
+                  future: futurePros,
+                  builder: (context, snapshot) {
+                    if(snapshot.connectionState == ConnectionState.done) {
+                      List<ProGamer> proGamerList = snapshot.data as List<ProGamer>;
+
+                      return Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(proGamerList.first.gamer_nickname)
+                            ],
+                          ),
+                        ],
+                      );
+                    }
+
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }),
               Container(
                 width: 100,
                 child: Card(

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 class Spell {
   int abilityUses;
   int spell1Casts;
@@ -13,13 +15,17 @@ class Spell {
     required this.spell4Casts,
   });
 
-  factory Spell.fromJson(Map<String, dynamic> json) => Spell(
-    abilityUses: json['abilityUses'],
-    spell1Casts: json['spell1Casts'],
-    spell2Casts: json['spell2Casts'],
-    spell3Casts: json['spell3Casts'],
-    spell4Casts: json['spell4Casts'],
-  );
+  factory Spell.fromJson(Map<String, dynamic> json) {
+    log("Spell Class Json parsing Start");
+    log("key list : ${json.keys}");
+    return Spell(
+      abilityUses: json['abilityUses'],
+      spell1Casts: json['spell1Casts'],
+      spell2Casts: json['spell2Casts'],
+      spell3Casts: json['spell3Casts'],
+      spell4Casts: json['spell4Casts'],
+    );
+  }
 
   factory Spell.empty() => Spell(
     abilityUses: 0,

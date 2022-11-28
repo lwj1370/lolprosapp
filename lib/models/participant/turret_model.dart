@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 class Turret {
   bool firstTowerAssist;
   bool firstTowerKill;
@@ -13,12 +15,16 @@ class Turret {
     required this.turretsLost,
   });
 
-  factory Turret.fromJson(Map<String, dynamic> json) => Turret(
-      firstTowerAssist: json['firstTowerAssist'],
-      firstTowerKill: json['firstTowerKill'],
-      turretKills: json['turretKills'],
-      turretTakedowns: json['turretTakedowns'],
-      turretsLost: json['turretsLost']);
+  factory Turret.fromJson(Map<String, dynamic> json) {
+    log("Turret Class Json parsing Start");
+    log("key list : ${json.keys}");
+    return Turret(
+        firstTowerAssist: json['firstTowerAssist'],
+        firstTowerKill: json['firstTowerKill'],
+        turretKills: json['turretKills'],
+        turretTakedowns: json['turretTakedowns'],
+        turretsLost: json['turretsLost']);
+  }
 
   factory Turret.empty() => Turret(
       firstTowerAssist: false,

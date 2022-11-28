@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 class MatchDetails {
   final bool win;
   final bool gameEndedInEarlySurrender;
@@ -11,6 +13,8 @@ class MatchDetails {
   );
 
   factory MatchDetails.fromJson(Map<String, dynamic> json) {
+    log("MatchDetails Class Json parsing Start");
+    log("key list : ${json.keys}");
     return MatchDetails(
       json['win'],
       json['gameEndedInEarlySurrender'],

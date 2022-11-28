@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 class Item {
   int goldEarned;
   int goldSpent;
@@ -24,6 +26,8 @@ class Item {
   });
 
   factory Item.fromJson(Map<String, dynamic> json) {
+    log("Item Class Json parsing Start");
+    log("key list : ${json.keys}");
     Item item = Item.empty();
     try {
       item = Item(

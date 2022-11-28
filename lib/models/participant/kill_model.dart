@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 class Kill {
   bool firstBloodAssist;
   bool firstBloodKill;
@@ -34,7 +36,8 @@ class Kill {
   });
 
   factory Kill.fromJson(Map<String, dynamic> json) {
-
+    log("Kill Class Json parsing Start");
+    log("key list : ${json.keys}");
     return Kill(
       firstBloodAssist: json['firstBloodAssist'],
       firstBloodKill: json['firstBloodKill'],

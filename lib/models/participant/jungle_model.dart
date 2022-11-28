@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 class Jungle {
   int baronTakedowns;
   int dragonTakedowns;
@@ -10,6 +12,8 @@ class Jungle {
   });
 
   factory Jungle.fromJson(Map<String, dynamic> json) {
+    log("Jungle Class Json parsing Start");
+    log("key list : ${json.keys}");
     return Jungle(
       baronTakedowns: json['baronTakedowns'],
       dragonTakedowns: json['dragonTakedowns'],

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 class Ward {
   int visionClearedPings;
   int visionScore;
@@ -13,12 +15,16 @@ class Ward {
     required this.wardsPlaced,
   });
 
-  factory Ward.fromJson(Map<String, dynamic> json) => Ward(
-    visionClearedPings: json['visionClearedPings'],
-    visionScore: json['visionScore'],
-    visionWardsBoughtInGame: json['visionWardsBoughtInGame'],
-    wardsKilled: json['wardsKilled'],
-    wardsPlaced: json['wardsPlaced']);
+  factory Ward.fromJson(Map<String, dynamic> json) {
+    log("Ward Class Json parsing Start");
+    log("key list : ${json.keys}");
+    return Ward(
+        visionClearedPings: json['visionClearedPings'],
+        visionScore: json['visionScore'],
+        visionWardsBoughtInGame: json['visionWardsBoughtInGame'],
+        wardsKilled: json['wardsKilled'],
+        wardsPlaced: json['wardsPlaced']);
+  }
 
   factory Ward.empty() => Ward(
       visionClearedPings: 0,

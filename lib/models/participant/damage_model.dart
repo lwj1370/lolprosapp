@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 class Damage {
   double damagePerMinute;
   int totalDamageDealt;
@@ -37,25 +39,29 @@ class Damage {
     required this.magicDamageTaken,
   });
 
-  factory Damage.fromJson(Map<String, dynamic> json) => Damage(
-      damagePerMinute: json['damagePerMinute'],
-      totalDamageDealt: json['totalDamageDealt'],
-      totalDamageDealtToChampions: json['totalDamageDealtToChampions'],
-      totalDamageShieldedOnTeammates: json['totalDamageShieldedOnTeammates'],
-      totalDamageTaken: json['totalDamageTaken'],
-      totalHeal: json['totalHeal'],
-      totalHealsOnTeammates: json['totalHealsOnTeammates'],
-      totalMinionsKilled: json['totalMinionsKilled'],
-      totalTimeCCDealt: json['totalTimeCCDealt'],
-      totalTimeSpentDead: json['totalTimeSpentDead'],
-      totalUnitsHealed: json['totalUnitsHealed'],
-      magicDamageDealt: json['magicDamageDealt'],
-      magicDamageDealtToChampions: json['magicDamageDealtToChampions'],
-      physicalDamageDealt: json['physicalDamageDealt'],
-      physicalDamageDealtToChampions: json['physicalDamageDealtToChampions'],
-      physicalDamageTaken: json['physicalDamageTaken'],
-      magicDamageTaken: json['magicDamageTaken']
-  );
+  factory Damage.fromJson(Map<String, dynamic> json) {
+    log("Damage Class Json parsing Start");
+    log("key list : ${json.keys}");
+    return Damage(
+        damagePerMinute: json['damagePerMinute'],
+        totalDamageDealt: json['totalDamageDealt'],
+        totalDamageDealtToChampions: json['totalDamageDealtToChampions'],
+        totalDamageShieldedOnTeammates: json['totalDamageShieldedOnTeammates'],
+        totalDamageTaken: json['totalDamageTaken'],
+        totalHeal: json['totalHeal'],
+        totalHealsOnTeammates: json['totalHealsOnTeammates'],
+        totalMinionsKilled: json['totalMinionsKilled'],
+        totalTimeCCDealt: json['totalTimeCCDealt'],
+        totalTimeSpentDead: json['totalTimeSpentDead'],
+        totalUnitsHealed: json['totalUnitsHealed'],
+        magicDamageDealt: json['magicDamageDealt'],
+        magicDamageDealtToChampions: json['magicDamageDealtToChampions'],
+        physicalDamageDealt: json['physicalDamageDealt'],
+        physicalDamageDealtToChampions: json['physicalDamageDealtToChampions'],
+        physicalDamageTaken: json['physicalDamageTaken'],
+        magicDamageTaken: json['magicDamageTaken']
+    );
+  }
 
   factory Damage.empty() => Damage(
     damagePerMinute: 0.0,

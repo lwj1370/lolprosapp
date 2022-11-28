@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:lolprosapp/models/match_model.dart';
 
-Future<GameMatch> lolGamer(String gamer) async {
+Future<GameMatch> lolMatch(String gamer) async {
 
   String url = 'http://127.0.0.1:8000/lol/match-api';
   GameMatch gameMatch = GameMatch.empty();

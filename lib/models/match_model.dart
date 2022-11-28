@@ -1,4 +1,4 @@
-// import 'package:lolprosapp/models/participant/match_detail_model.dart';
+import 'dart:developer';
 
 import 'participant/match_detail_model.dart';
 import 'package:lolprosapp/models/participant/item_model.dart';
@@ -43,6 +43,8 @@ class GameMatch {
   });
 
   factory GameMatch.fromJson(Map<String, dynamic> json) {
+    log("GameMatch Class Json parsing Start");
+    log("key list : ${json.keys}");
     return GameMatch(
         matchId: json['matchId'],
         startTime: json['startTime'],

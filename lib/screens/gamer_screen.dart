@@ -19,7 +19,7 @@ class _GamerScreenState extends State<GamerScreen> {
 
     // widget은 _GamerScreenState의 상위 GameScreen을 의미함
     log('Requested Gamer Nickname : ${widget.gamerName}');
-    futureGameMatch = lolGamer(widget.gamerName);
+    futureGameMatch = lolMatch(widget.gamerName);
 
     super.initState();
   }

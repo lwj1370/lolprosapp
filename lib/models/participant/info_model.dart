@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 class Info {
   String summonerName;
   int summonerLevel;
@@ -15,6 +17,8 @@ class Info {
     required this.lane});
 
   factory Info.fromJson(Map<String, dynamic> json) {
+    log("Info Class Json parsing Start");
+    log("key list : ${json.keys}");
     return Info(
       summonerName: json["summonerName"],
       summonerLevel: json['summonerLevel'],
