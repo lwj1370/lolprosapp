@@ -40,19 +40,76 @@ class _GamerScreenState extends State<GamerScreen> {
                 builder: (context, snapshot) {
                   if(snapshot.connectionState == ConnectionState.done) {
                     GameMatch gameMatch = snapshot.data as GameMatch;
-                    return Column(
-                      children: [
-                        Row(
-                          children: [
-                            Text(gameMatch.matchId)
-                          ],
-                        ),
-                      ],
+                    print(gameMatch);
+                    return Container(
+                      padding: EdgeInsets.all(15),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: <Widget>[
+                              Image.asset('images/logo/tilogo.png'),
+                              Expanded(
+                                  child: Container(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: <Widget>[
+                                      Text(gameMatch.info.summonerName),
+                                      Text('${gameMatch.info.champLevel}'),
+                                      Text(gameMatch.info.lane),
+                                    ],
+                                  ),
+                                )
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: <Widget>[
+                              Container(
+                                child: Text('최근 인게임 정보 (${gameMatch.detail.win ? "승리" : "패배"})'),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text('시작 시간 : ${gameMatch.startTime}'),
+                                  Text('종료 시간 : ${gameMatch.endTime}'),
+                                  Text('플레이 시간 : ${gameMatch.duration}'),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text('플레이 챔피언 : ${gameMatch.info.championName}'),
+                                  Text('포지션 : ${gameMatch.info.lane}'),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text('플레이 챔피언 : ${gameMatch.startTime}'),
+                                  Text('종료 시간 : ${gameMatch.endTime}'),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text('Kill : ${gameMatch.kill.kills}'),
+                                  Text('Death : ${gameMatch.kill.deaths}'),
+                                  Text('KDA : ${gameMatch.kill.kda}'),
+                                ],
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     );
                   }
 
-                  return Center(
-                    child: CircularProgressIndicator(),
+                  return Column(
+                    children: [
+                      SizedBox(height: MediaQuery.of(context).size.height * 0.3,),
+                      CircularProgressIndicator(),
+                    ],
                   );
                 })
             ),
