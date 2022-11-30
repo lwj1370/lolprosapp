@@ -20,7 +20,7 @@ Future<GameMatch> lolMatch(String gamer) async {
     );
 
     log('Request Result : ${response.body}');
-    gameMatch = GameMatch.fromJson(jsonDecode(response.body)['match']);
+    gameMatch = GameMatch.fromJson(jsonDecode(utf8.decode(response.bodyBytes))['match']);
     log('Result : ${gameMatch.toString()}');
   } catch(e) {
     log('Error Occurred $e');

@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:lolprosapp/models/match_model.dart';
 import 'package:lolprosapp/providers/lol_match_provider.dart';
@@ -26,6 +27,8 @@ class _GamerScreenState extends State<GamerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    DateFormat dateFormat = DateFormat('yyyy-MM-dd HH:mm');
+
     return Container(
       child: Scaffold(
         appBar: AppBar(
@@ -40,7 +43,7 @@ class _GamerScreenState extends State<GamerScreen> {
                 builder: (context, snapshot) {
                   if(snapshot.connectionState == ConnectionState.done) {
                     GameMatch gameMatch = snapshot.data as GameMatch;
-                    print(gameMatch);
+
                     return Container(
                       padding: EdgeInsets.all(15),
                       child: Column(
@@ -71,8 +74,7 @@ class _GamerScreenState extends State<GamerScreen> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Text('시작 시간 : ${gameMatch.startTime}'),
-                                  Text('종료 시간 : ${gameMatch.endTime}'),
+                                  Text('게임 시간 : ${dateFormat.format(gameMatch.startTime)} ~ ${dateFormat.format(gameMatch.endTime)}'),
                                   Text('플레이 시간 : ${gameMatch.duration}'),
                                 ],
                               ),
@@ -81,13 +83,6 @@ class _GamerScreenState extends State<GamerScreen> {
                                 children: [
                                   Text('플레이 챔피언 : ${gameMatch.info.championName}'),
                                   Text('포지션 : ${gameMatch.info.lane}'),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Text('플레이 챔피언 : ${gameMatch.startTime}'),
-                                  Text('종료 시간 : ${gameMatch.endTime}'),
                                 ],
                               ),
                               Row(
@@ -107,8 +102,13 @@ class _GamerScreenState extends State<GamerScreen> {
 
                   return Column(
                     children: [
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.3,),
-                      CircularProgressIndicator(),
+                      SizedBox(height: MediaQuery.of(context).size.height * 0.35,),
+                      Row(
+                        children: [
+                          SizedBox(width: MediaQuery.of(context).size.height * 0.6,),
+                          CircularProgressIndicator(),
+                        ],
+                      )
                     ],
                   );
                 })

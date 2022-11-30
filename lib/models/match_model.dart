@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:flutter/material.dart';
 
 import 'participant/match_detail_model.dart';
 import 'package:lolprosapp/models/participant/item_model.dart';
@@ -13,8 +14,8 @@ import 'package:lolprosapp/models/participant/ward_model.dart';
 class GameMatch {
 
   final String matchId;
-  final String startTime;
-  final String endTime;
+  final DateTime startTime;
+  final DateTime endTime;
   final String duration;
   final MatchDetails detail;
   final Item item;
@@ -47,8 +48,8 @@ class GameMatch {
     log("key list : ${json.keys}");
     return GameMatch(
         matchId: json['matchId'],
-        startTime: json['startTime'],
-        endTime: json['endTime'],
+        startTime: DateTime.parse(json['startTime']),
+        endTime: DateTime.parse(json['endTime']),
         duration: json['duration'],
         detail: MatchDetails.fromJson(json['detail']),
         item: Item.fromJson(json['item']),
@@ -64,8 +65,8 @@ class GameMatch {
 
   factory GameMatch.empty() => GameMatch(
     matchId: '',
-    startTime: '',
-    endTime: '',
+    startTime: DateTime.now(),
+    endTime: DateTime.now(),
     duration: '',
     detail: MatchDetails.empty(),
     item: Item.empty(),
