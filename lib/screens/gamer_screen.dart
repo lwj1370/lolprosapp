@@ -1,5 +1,6 @@
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:lolprosapp/models/match_model.dart';
 import 'package:lolprosapp/providers/lol_match_provider.dart';
 import 'dart:developer';
@@ -10,6 +11,14 @@ class GamerScreen extends StatefulWidget {
 
   @override
   State<GamerScreen> createState() => _GamerScreenState();
+}
+
+final Uri _url = Uri.parse('https://ko.t1.gg/teams/league-of-legends');
+
+Future<void> _launchUrl() async {
+  if (!await launchUrl(_url)) {
+    throw 'Could not launch $_url';
+  }
 }
 
 class _GamerScreenState extends State<GamerScreen> {
@@ -32,7 +41,7 @@ class _GamerScreenState extends State<GamerScreen> {
     return Container(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('LOL Pro-Gamers Info'),
+          title: Text('LOL Pro-Gamer Info'),
         ),
         body: Column(
           children: [
@@ -51,48 +60,121 @@ class _GamerScreenState extends State<GamerScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: <Widget>[
-                              Image.asset('images/logo/tilogo.png'),
+                              Image.asset('images/players/${gameMatch.info.summonerName.replaceAll(' ', '_')}.png',
+                                width: MediaQuery.of(context).size.width * 0.4,
+                              ),
                               Expanded(
                                   child: Container(
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: <Widget>[
-                                      Text(gameMatch.info.summonerName),
-                                      Text('${gameMatch.info.champLevel}'),
-                                      Text(gameMatch.info.lane),
+                                      Container(
+                                        child: Text(gameMatch.info.summonerName,
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        padding: EdgeInsets.all(15),
+                                      ),
+                                      Container(
+                                        child: Text('Lv. ${gameMatch.info.summonerLevel}',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        padding: EdgeInsets.all(15),
+                                      ),
+                                      Container(
+                                        child: Text('주 포지션 - ${gameMatch.info.lane}',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        padding: EdgeInsets.all(15),
+                                      ),
                                     ],
                                   ),
                                 )
                               )
                             ],
                           ),
+                          Divider(
+                            color: Colors.grey,
+                          ),
                           Column(
                             children: <Widget>[
                               Container(
-                                child: Text('최근 인게임 정보 (${gameMatch.detail.win ? "승리" : "패배"})'),
+                                padding: EdgeInsets.all(10),
+                                child: Text('최근 인게임 정보 - "${gameMatch.matchType}" (${gameMatch.detail.win ? "승리" : "패배"} - ${gameMatch.duration})',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
+
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text('게임 시간 : ${dateFormat.format(gameMatch.startTime)} ~ ${dateFormat.format(gameMatch.endTime)}'),
-                                  Text('플레이 시간 : ${gameMatch.duration}'),
+                                  Container(
+                                    padding: EdgeInsets.all(5),
+                                    child: Text('Play Time : '
+                                        '${dateFormat.format(gameMatch.startTime)} ~ '
+                                        '${dateFormat.format(gameMatch.endTime)}'),
+                                  ),
                                 ],
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Text('플레이 챔피언 : ${gameMatch.info.championName}'),
-                                  Text('포지션 : ${gameMatch.info.lane}'),
-                                ],
+                              Container(
+                                padding: EdgeInsets.all(5),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('챔피언 : ${gameMatch.info.championName}'),
+                                    Text('최종 레벨 : ${gameMatch.info.champLevel}'),
+                                    Text('포지션 : ${gameMatch.info.lane}'),
+                                  ],
+                                ),
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Text('Kill : ${gameMatch.kill.kills}'),
-                                  Text('Death : ${gameMatch.kill.deaths}'),
-                                  Text('KDA : ${gameMatch.kill.kda}'),
-                                ],
+                              Container(
+                                padding: EdgeInsets.all(5),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('드래곤 : ${gameMatch.jungle.dragonTakedowns}'),
+                                    Text('바론 : ${gameMatch.jungle.baronTakedowns}'),
+                                    Text('장로 드래곤 : ${gameMatch.jungle.elderDragonMultikills}'),
+                                  ],
+                                ),
                               ),
+                              Container(
+                                padding: EdgeInsets.all(5),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Kill : ${gameMatch.kill.kills}'),
+                                    Text('Assist : ${gameMatch.kill.assists}'),
+                                    Text('Death : ${gameMatch.kill.deaths}'),
+                                    Text('KDA : ${gameMatch.kill.kda.toStringAsFixed(2)}'),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 10,),
+                              Container(
+                                child: ElevatedButton(
+                                  onPressed: _launchUrl,
+                                  child: Center(
+                                    child: Text('T1 팬페이지 방문하기',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      )
+                                    ),
+                                  ),
+                                ),
+                              )
                             ],
                           )
                         ],
@@ -105,7 +187,7 @@ class _GamerScreenState extends State<GamerScreen> {
                       SizedBox(height: MediaQuery.of(context).size.height * 0.35,),
                       Row(
                         children: [
-                          SizedBox(width: MediaQuery.of(context).size.height * 0.6,),
+                          SizedBox(width: MediaQuery.of(context).size.width * 0.4,),
                           CircularProgressIndicator(),
                         ],
                       )

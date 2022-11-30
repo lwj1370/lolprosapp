@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'package:flutter/material.dart';
 
 import 'participant/match_detail_model.dart';
 import 'package:lolprosapp/models/participant/item_model.dart';
@@ -17,6 +16,7 @@ class GameMatch {
   final DateTime startTime;
   final DateTime endTime;
   final String duration;
+  final String matchType;
   final MatchDetails detail;
   final Item item;
   final Info info;
@@ -32,6 +32,7 @@ class GameMatch {
     required this.startTime,
     required this.endTime,
     required this.duration,
+    required this.matchType,
     required this.detail,
     required this.item,
     required this.info,
@@ -51,6 +52,7 @@ class GameMatch {
         startTime: DateTime.parse(json['startTime']),
         endTime: DateTime.parse(json['endTime']),
         duration: json['duration'],
+        matchType: json['matchType'],
         detail: MatchDetails.fromJson(json['detail']),
         item: Item.fromJson(json['item']),
         info: Info.fromJson(json['info']),
@@ -68,6 +70,7 @@ class GameMatch {
     startTime: DateTime.now(),
     endTime: DateTime.now(),
     duration: '',
+    matchType: 'None',
     detail: MatchDetails.empty(),
     item: Item.empty(),
     info: Info.empty(),
@@ -85,6 +88,7 @@ class GameMatch {
         'startTime : $startTime, '
         'endTime : $endTime, '
         'duration : $endTime, '
+        'matchType : $matchType, '
         'detail : $detail, '
         'item : $item, '
         'info : $info, '
